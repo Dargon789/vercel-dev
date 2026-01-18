@@ -7,7 +7,7 @@
         // env vars will impact hashes of all "build" tasks
         "SOME_ENV_VAR"
       ],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", "src/util/constants.ts", "src/util/dev/templates/*.ts"]
     },
     "web#build": {
       // override settings for the "build" task for the "web" app
