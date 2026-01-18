@@ -1,13 +1,25 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "extends": ["//"],
-  "tasks": {
+  "$schema": "https://turborepo.com/schema.json",
+  "pipeline": {
     "build": {
-      "outputs": [
-        "dist/**",
-        "src/util/constants.ts",
-        "src/util/dev/templates/*.ts"
-      ]
+      "dependsOn": ["^build"],
+      "env": [
+        // env vars will impact hashes of all "build" tasks
+        "SOME_ENV_VAR"
+      ],
+      "outputs": ["dist/**", "src/util/constants.ts", "src/util/dev/templates/*.ts"]
+    },
+    "web#build": {
+      // override settings for the "build" task for the "web" app
+      "dependsOn": ["^build"],
+      "env": ["SOME_OTHER_ENV_VAR"],
+      "outputs": [".next/**", "!.next/cache/**"]
     }
-  }
+  },
+  "globalEnv": [
+    "GITHUB_TOKEN" // env var that will impact the hashes of all tasks,
+  ],
+  "globalDependencies": [
+    "tsconfig.json" // file contents will impact the hashes of all tasks,
+  ]
 }
