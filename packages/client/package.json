@@ -41,7 +41,7 @@
   "dependencies": {
     "@vercel/build-utils": "12.1.0",
     "@vercel/error-utils": "2.0.3",
-    "@vercel/microfrontends": "1.2.2",
+    "@vercel/microfrontends": "2.3.0",
     "@vercel/routing-utils": "5.1.1",
     "async-retry": "1.2.3",
     "async-sema": "3.0.0",
